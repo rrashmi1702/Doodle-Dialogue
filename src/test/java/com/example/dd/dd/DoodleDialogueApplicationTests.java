@@ -9,5 +9,4 @@ class DoodleDialogueApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }

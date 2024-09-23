@@ -3,8 +3,10 @@ package com.example.dd.dd.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Getter
+@Setter
 @Entity
-@Data
+@Data // Automatically adds @Getter, @Setter, @ToString, @EqualsAndHashCode, and @RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
@@ -18,6 +20,17 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    // Custom constructor (optional, if needed)
+    public User(Long id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+//    public User getName() {
+//    }
 }
 
 enum UserRole {
