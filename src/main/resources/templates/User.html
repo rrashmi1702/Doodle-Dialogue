@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doodle and Dialogue Log-in/Sign-up</title>
-<!--    <link rel="stylesheet" href="styles.css">-->
 </head>
 <style>
     * {
@@ -139,7 +138,7 @@
         </form>
 
         <!-- Sign-Up Form -->
-        <form id="signup-form" action="api/users/signup" method="POST" class="form">
+        <form id="signup-form" action="/api/users/index" method="POST" class="form">
             <h2>Sign-Up</h2>
             <input type="text" id="signup-username" placeholder="Username" required>
             <input type="email" id="signup-email" placeholder="Email" required>
@@ -152,13 +151,15 @@
                 <option value="Sketch">Sketch</option>
                 <option value="ArtandCraft">Art & Craft</option>
             </select>
+<!--            <label for="phone">Phone</label>-->
+<!--            <input type="tel" id="phone" name="phone" placeholder="+91 1234567890" required>-->
+
             <button type="submit" class="btn" onclick="signup()">Sign Up</button>
             <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
         </form>
     </div>
 </div>
 
-<!--<script src="script.js"></script>-->
 </body>
 <script>
     function showLogin() {
@@ -194,6 +195,8 @@
         if (username && email && password && confirmPassword) {
             if (password === confirmPassword) {
                 alert('Signed up successfully');
+                window.location.href = "index.html"; // Redirect to index.html
+                return false; // Prevent default form submission since we are redirecting
             } else {
                 alert('Passwords do not match');
             }
