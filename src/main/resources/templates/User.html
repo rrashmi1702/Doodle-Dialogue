@@ -3,137 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Freelancer Portfolio - Rashmi Rautela</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Doodle and Dialogue Log-in/Sign-up</title>
+<!--    <link rel="stylesheet" href="styles.css">-->
 </head>
 <style>
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
     }
 
     body {
-        background-color: #f4f4f4;
-        color: #333;
-        line-height: 1.6;
-    }
-
-    /* Navbar styles */
-    .navbar {
-        background-color: #333;
-        padding: 10px 0;
-    }
-
-    .navbar .container {
+        font-family: 'Arial', sans-serif;
+        background-image: url("/bg.png");
+        background-size: cover;
+        height: 100vh;
         display: flex;
-        justify-content: space-between;
+        backdrop-filter: blur(5px);
+        justify-content: center;
         align-items: center;
-    }
-
-    .navbar-list {
-        list-style: none;
-        display: flex;
-        align-items: center;
-    }
-
-    .navbar-list li {
-        margin-right: 20px;
-    }
-
-    .navbar-list a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.1em;
-        transition: color 0.3s ease;
-    }
-
-    .navbar-list a:hover {
-        color: #ffa500; /* Highlight color on hover */
-    }
-
-    /* Search bar */
-    .search-bar {
-        display: flex;
-        align-items: center;
-    }
-
-    .search-bar input[type="text"] {
-        padding: 5px;
-        border: none;
-        border-radius: 5px;
-    }
-
-    .search-bar button {
-        padding: 5px 10px;
-        background-color: #ffa500;
-        border: none;
-        border-radius: 5px;
-        margin-left: 5px;
-        cursor: pointer;
-        color: white;
-    }
-
-    .search-bar button:hover {
-        background-color: #ff8800;
-    }
-
-    /* Rest of the styling for sections */
-    header {
-        background-color: #333;
-        color: white;
-        padding: 20px 0;
-        text-align: center;
-    }
-
-    header h1 {
-        margin-bottom: 10px;
-    }
-
-    header p {
-        font-size: 1.2em;
-    }
-
-    section {
-        padding: 20px 0;
     }
 
     .container {
-        width: 80%;
-        margin: auto;
-        overflow: hidden;
-    }
-
-    h2 {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 400px;
         text-align: center;
-        margin-bottom: 20px;
-        color: #333;
     }
 
+    .app-title {
+        color: #007bff;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
 
+    .tabs {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 30px;
+    }
 
+    .tab-btn {
+        width: 50%;
+        padding: 10px 0;
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+    }
+
+    .tab-btn.active {
+        border-bottom: 3px solid #007bff;
+        color: #007bff;
+    }
+
+    .form-container {
+        position: relative;
+    }
+
+    .form {
+        display: none;
+    }
+
+    .form.active {
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    select{
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        margin-top: 15px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
 
 </style>
 <body>
-<!-- Navbar -->
-<nav class="navbar">
-    <div class="container">
-        <ul class="navbar-list">
-            <li><a href="#home">Home</a></li>
-            <li class="search-bar">
-                <input type="text" placeholder="Search..." id="search">
-                <button>Search</button>
-            </li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#messaging">Messaging</a></li>
-            <li><a href="#networks">Networks</a></li>
-            <li><a href="#profile">Profile</a></li>
-        </ul>
+<div class="container">
+    <!-- Logo or Header -->
+    <h1 class="app-title">Doodle & Dialogue</h1>
+
+    <!-- Tabs for Login and Sign-Up -->
+    <div class="tabs">
+        <button class="tab-btn active" id="login-tab" onclick="showLogin()">Login</button>
+        <button class="tab-btn" id="signup-tab" onclick="showSignup()">Sign-Up</button>
     </div>
-</nav>
 
+    <!-- Forms Container -->
+    <div class="form-container">
+        <!-- Login Form -->
+        <form id="login-form" class="form active">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="button" class="btn" onclick="login()">Login</button>
+            <p>Forgot your password? <a href="#">Click here</a></p>
+        </form>
 
+        <!-- Sign-Up Form -->
+        <form id="signup-form" action="api/users/signup" method="POST" class="form">
+            <h2>Sign-Up</h2>
+            <input type="text" id="signup-username" placeholder="Username" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+            <select name="category" id="category">
+                <option value="" disabled selected>Category</option>
+                <option value="Singing">Singing</option>
+                <option value="Dance">Dance</option>
+                <option value="Sketch">Sketch</option>
+                <option value="ArtandCraft">Art & Craft</option>
+            </select>
+            <button type="submit" class="btn" onclick="signup()">Sign Up</button>
+            <p>By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+        </form>
+    </div>
+</div>
+
+<!--<script src="script.js"></script>-->
 </body>
+<script>
+    function showLogin() {
+        document.getElementById('login-form').classList.add('active');
+        document.getElementById('signup-form').classList.remove('active');
+        document.getElementById('login-tab').classList.add('active');
+        document.getElementById('signup-tab').classList.remove('active');
+    }
+
+    function showSignup() {
+        document.getElementById('signup-form').classList.add('active');
+        document.getElementById('login-form').classList.remove('active');
+        document.getElementById('signup-tab').classList.add('active');
+        document.getElementById('login-tab').classList.remove('active');
+    }
+
+    function login() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        if (email && password) {
+            alert('Logged in successfully');
+        } else {
+            alert('Please fill in all fields');
+        }
+    }
+
+    function signup() {
+        const username = document.getElementById('signup-username').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+        const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+        if (username && email && password && confirmPassword) {
+            if (password === confirmPassword) {
+                alert('Signed up successfully');
+            } else {
+                alert('Passwords do not match');
+            }
+        } else {
+            alert('Please fill in all fields');
+        }
+    }
+
+</script>
 </html>

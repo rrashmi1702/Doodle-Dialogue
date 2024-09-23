@@ -13,12 +13,11 @@ public class Bid {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Double amount;
-
     @ManyToOne
     private User freelancer;
-
     @ManyToOne
     private Project project;
+
 }
+

@@ -13,26 +13,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
     private String email;
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
-
-    // Custom constructor (optional, if needed)
-    public User(Long id, String username, String email, String password) {
-        this.id = id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-
-//    public User getName() {
-//    }
-}
-
-enum UserRole {
-    FREELANCER, CLIENT
+    private String category;
 }
